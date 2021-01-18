@@ -1,0 +1,47 @@
+@import "variables";
+@import "global";
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.users-panel {
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.users-header {
+  line-height: 2;
+  .col-users {
+    background-color: darken($aliceBlue, 5%);
+  }
+}
+
+.row-users {
+  display: flex;
+  justify-content: start;
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.col-users {
+  border-right: 2px solid white;
+  display: flex;
+  align-items: center;
+  padding: 0 25px;
+  background-color: $aliceBlue;
+  &__first-name {
+    width: 20%;
+  }
+  &__last-name {
+    width: 25%;
+  }
+  &__email {
+    width: 35%;
+  }
+  &__groups {
+    width: 20%;
+  }
+
+}

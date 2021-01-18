@@ -1,0 +1,29 @@
+<div class="panel-header">
+  <div class="panel-header__title">
+    Admin panel
+  </div>
+  <div *ngIf="listOfUsers$ | async as listOfUsers">
+    <angular2csv [data]="listOfUsers" filename="list_of_users.csv" [options]="fileOptions"></angular2csv>
+  </div>
+</div>
+
+<div class="users-panel">
+
+  <ul class="row-users users-header">
+    <li class="col-users col-users__first-name"> First Name </li>
+    <li class="col-users col-users__last-name"> Last Name </li>
+    <li class="col-users col-users__email"> Email </li>
+    <li class="col-users col-users__groups"> Groups </li>
+  </ul>
+
+  <div *ngIf="listOfUsers$ | async as listOfUsers">
+    <ul class="users-list" *ngFor="let user of listOfUsers">
+      <ul class="row-users">
+        <li class="col-users col-users__first-name"> {{ user.first_name }} </li>
+        <li class="col-users col-users__last-name"> {{ user.last_name }} </li>
+        <li class="col-users col-users__email"> {{ user.email }} </li>
+        <li class="col-users col-users__groups"> <span *ngFor="let group of user.groups"> {{ group }}&nbsp; </span></li>
+      </ul>
+    </ul>
+  </div>
+</div>

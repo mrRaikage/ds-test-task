@@ -1,0 +1,7 @@
+<div class="panel-header">
+  <div class="panel-header__title">User panel</div>
+  <div *ngIf="isUserAnAdmin">
+    <button mat-button class="panel-header__btn" (click)="toAdminPanel()">Admin panel</button>
+  </div>
+</div>
+<app-reports></app-reports>
