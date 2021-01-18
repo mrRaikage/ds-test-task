@@ -1,4 +1,4 @@
-import {Action, createReducer, on} from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as reportsActions from './users.actions';
 import { IListOfUsers } from '../models/users-data.interface';
 
@@ -16,11 +16,8 @@ export function usersReducer(state: IListOfUsersState | undefined, action: Actio
 
 const reducer = createReducer<IListOfUsersState>(
   initialState,
-  on(reportsActions.loadListOfUsers, state => ({
-    ...state
-  })),
 
-  on(reportsActions.listOfUsersLoaded, (state , { data }) => ({
+  on(reportsActions.listOfUsersLoaded, (state, { data }) => ({
     ...state,
     userList: data,
   })),

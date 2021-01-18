@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Chart } from 'chart.js';
+
 import { getChartSettings } from '../../../utils/chart-settings';
 
 @Component({
@@ -12,7 +13,8 @@ export class ChartComponent implements OnChanges {
   @Input() chartlabels: string[];
   @Input() chartValues: number[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnChanges() {
     const myChart = new Chart('myChart', getChartSettings(this.title, this.chartlabels, this.chartValues));

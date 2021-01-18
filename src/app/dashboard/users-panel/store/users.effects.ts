@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import * as reportsActions from './users.actions';
-import { map, switchMap } from 'rxjs/operators';
-import { AdminService } from '../services/admin.service';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
+import * as reportsActions from './users.actions';
+import { AdminService } from '../services/admin.service';
 
 @Injectable()
 export class UsersEffects {
@@ -12,6 +14,7 @@ export class UsersEffects {
     private actions$: Actions,
     private store: Store,
     private reportsService: AdminService,
+    private toastr: ToastrService
   ) {
   }
 
@@ -21,7 +24,11 @@ export class UsersEffects {
       return this.reportsService.getListOfUsers().pipe(
         map((reportsData) => {
           return reportsActions.listOfUsersLoaded({ data: reportsData });
-        })
+        }),
+        catchError((error) => {
+          this.toastr.error('Oops, list of users loaded failed');
+          return of(reportsActions.listOfUsersLoadedFailure());
+        }),
       );
     }),
   ));

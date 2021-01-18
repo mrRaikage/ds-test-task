@@ -1,6 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { ApiService } from '../../shared/services/api.service';
 import { IUserData } from '../../shared/models/user-data.interface';
@@ -8,16 +7,18 @@ import { IUserData } from '../../shared/models/user-data.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService extends ApiService{
+export class AuthService extends ApiService {
   private tokenStoreKey = 'token';
   private roleStoreKey = 'role';
+
+  public isAdmin$ = new BehaviorSubject(false);
 
   constructor(protected injector: Injector) {
     super(injector);
   }
 
-  login({username, password}): Observable<IUserData> {
-    return super.post<IUserData>('login', {email: username, password});
+  login({ username, password }): Observable<IUserData> {
+    return super.post<IUserData>('login', { email: username, password });
   }
 
   setToken(token): void {
@@ -32,11 +33,12 @@ export class AuthService extends ApiService{
     return !!this.getToken();
   }
 
-  setRole(role): void {
+  setRole(role: string): void {
+    this.isAdmin$.next(role === 'Admin');
     localStorage.setItem(this.roleStoreKey, role);
   }
 
   getRole(): string {
-   return localStorage.getItem(this.roleStoreKey);
+    return localStorage.getItem(this.roleStoreKey);
   }
 }

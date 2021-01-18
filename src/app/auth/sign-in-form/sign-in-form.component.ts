@@ -25,7 +25,8 @@ export class SignInFormComponent {
     return this.form.controls.password;
   }
 
-  constructor(private store: Store<IAuthState>) {}
+  constructor(private store: Store<IAuthState>) {
+  }
 
   signIn(): void {
     if (this.form.invalid) {

@@ -7,7 +7,6 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Router } from '@angular/router';
-
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -15,14 +14,15 @@ import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+  }
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    // TODO define auth flow and fix this
     if (this.authService.hasToken()) {
       request = request.clone({
         setHeaders: {
-            'X-Token': this.authService.getToken()
+          'X-Token': this.authService.getToken()
         }
       });
     }

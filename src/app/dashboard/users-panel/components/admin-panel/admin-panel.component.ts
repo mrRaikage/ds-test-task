@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { loadListOfUsers } from '../../store/users.actions';
 import { selectListOfUsers } from '../../store/users.selectors';
 import { getCsvSettings } from '../../../../shared/utils/csv-settings';

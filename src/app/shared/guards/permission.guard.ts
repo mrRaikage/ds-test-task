@@ -6,7 +6,8 @@ import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable()
 export class PermissionGuard implements CanActivate {
-  constructor(public authService: AuthService, public router: Router) {}
+  constructor(public authService: AuthService, public router: Router) {
+  }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (!this.authService.hasToken()) {
@@ -19,12 +20,12 @@ export class PermissionGuard implements CanActivate {
   }
 
   checkUserRole(route: ActivatedRouteSnapshot, url: any): boolean {
-      const userRole = this.authService.getRole();
-      if (route.data.role.indexOf(userRole) === -1) {
-        this.router.navigate(['dashboard']);
-        return false;
-      }
+    const userRole = this.authService.getRole();
+    if (route.data.role.indexOf(userRole) === -1) {
+      this.router.navigate(['dashboard']);
+      return false;
+    }
 
-      return true;
+    return true;
   }
 }

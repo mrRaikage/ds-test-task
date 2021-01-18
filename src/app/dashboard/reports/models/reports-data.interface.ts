@@ -9,14 +9,14 @@ export interface IReportsData {
   userReport: IUserReportData[];
 }
 
-export interface  IUserGraph {
+export interface IUserGraph {
   data: IAssessmentGraphData;
   type: string;
 }
 
-export interface  IAssessmentGraphData {
-    Agreeableness: number;
-    Drive: number;
-    Luck: number;
-    Openess: number;
+export interface IAssessmentGraphData {
+  Agreeableness: number;
+  Drive: number;
+  Luck: number;
+  Openess: number;
 }

@@ -28,7 +28,6 @@ const reducer = createReducer<IAuthState>(
   on(authActions.signInSuccess, (state, { user }) => ({
       ...state,
       userData: user,
-      // authorization: false,
     })
   ),
 

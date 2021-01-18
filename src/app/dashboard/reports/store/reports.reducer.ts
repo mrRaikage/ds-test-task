@@ -1,5 +1,5 @@
 import { IReportsData, IUserGraph } from '../models/reports-data.interface';
-import {Action, createReducer, on} from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as reportsActions from './reports.actions';
 
 export interface IUserReportsState {
@@ -18,16 +18,13 @@ export function reportReducer(state: IUserReportsState | undefined, action: Acti
 
 const reducer = createReducer<IUserReportsState>(
   initialState,
-  on(reportsActions.loadReport, state => ({
-    ...state
-  })),
 
-  on(reportsActions.userReportLoaded, (state , { data }) => ({
+  on(reportsActions.userReportLoaded, (state, { data }) => ({
     ...state,
     userReports: data,
   })),
 
-  on(reportsActions.reportGraphLoaded, (state , { graphData}) => ({
+  on(reportsActions.reportGraphLoaded, (state, { graphData }) => ({
     ...state,
     graphData,
   })),

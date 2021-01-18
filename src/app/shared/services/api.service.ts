@@ -20,7 +20,6 @@ export class ApiService {
     this.httpClient = injector.get(HttpClient);
   }
 
-
   get<T>(path: string, options: { [param: string]: any } = {}): Observable<T> {
     return this.httpClient.get<T>(`${this.apiUrl}/api/${path}`, options);
   }
@@ -28,16 +27,4 @@ export class ApiService {
   post<T>(path: string, body: any, options: { [param: string]: any } = {}): Observable<T> {
     return this.httpClient.post<T>(`${this.apiUrl}/api/${path}`, body, options);
   }
-
-  // patch<T>(path: string, body: any, options: { [param: string]: any } = {}): Observable<T> {
-  //   return this.httpClient.patch<T>(`${this.apiUrl}/api/${path}/`, body, options);
-  // }
-  //
-  // put<T>(path: string, body: any, options: { [param: string]: any } = {}): Observable<T> {
-  //   return this.httpClient.put<T>(`${this.apiUrl}/api/${path}/`, body);
-  // }
-  //
-  // delete<T>(path: string, options: { [param: string]: any } = {}): Observable<T> {
-  //   return this.httpClient.delete<T>(`${this.apiUrl}/api/${path}/`, options);
-  // }
 }
