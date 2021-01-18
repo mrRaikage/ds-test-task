@@ -4,6 +4,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { Angular2CsvModule } from 'angular2-csv';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -17,7 +18,6 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminService } from './users-panel/services/admin.service';
 import { usersReducer } from './users-panel/store/users.reducer';
 import { UsersEffects } from './users-panel/store/users.effects';
-import { Angular2CsvModule } from 'angular2-csv';
 
 @NgModule({
   declarations: [DashboardComponent, ReportsComponent, AdminPanelComponent, UserPanelComponent],

@@ -16,9 +16,6 @@ export function usersReducer(state: IListOfUsersState | undefined, action: Actio
 
 const reducer = createReducer<IListOfUsersState>(
   initialState,
-  on(reportsActions.loadListOfUsers, state => ({
-    ...state
-  })),
 
   on(reportsActions.listOfUsersLoaded, (state , { data }) => ({
     ...state,

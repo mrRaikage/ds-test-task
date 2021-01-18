@@ -12,6 +12,15 @@ import { AuthService } from '../../services/auth.service';
 @Injectable()
 export class AuthEffects {
 
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private router: Router,
+    private store: Store,
+    private ngZone: NgZone
+  ) {}
+
   signIn$ = createEffect(() => this.actions$.pipe(
     ofType(authActions.signIn),
     switchMap(({ username, password }) => {
@@ -31,13 +40,4 @@ export class AuthEffects {
       );
     }),
   ));
-
-  constructor(
-    private actions$: Actions,
-    private authService: AuthService,
-    private toastr: ToastrService,
-    private router: Router,
-    private store: Store,
-    private ngZone: NgZone
-  ) {}
 }

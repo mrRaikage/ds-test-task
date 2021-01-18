@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Chart } from 'chart.js';
+
 import { getChartSettings } from '../../../utils/chart-settings';
 
 @Component({

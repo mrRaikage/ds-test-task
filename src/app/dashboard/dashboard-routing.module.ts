@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { DashboardComponent } from './dashboard.component';
 import { UserPanelComponent } from './users-panel/components/user-panel/user-panel.component';
 import { AdminPanelComponent } from './users-panel/components/admin-panel/admin-panel.component';

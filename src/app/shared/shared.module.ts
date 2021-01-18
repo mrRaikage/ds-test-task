@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApiService } from './services/api.service';
-import { StoreModule } from '@ngrx/store';
-import { authReducer } from '../auth/store/auth/auth.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from '../auth/store/auth/auth.effects';
 import { ToastrModule } from 'ngx-toastr';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { ApiService } from './services/api.service';
+import { authReducer } from '../auth/store/auth/auth.reducer';
+import { AuthEffects } from '../auth/store/auth/auth.effects';
 import { TokenInterceptor } from './interceptors/http-token.interceptor';
 import { PermissionGuard } from './guards/permission.guard';
 import { ChartComponent } from './charts/components/chart/chart.component';

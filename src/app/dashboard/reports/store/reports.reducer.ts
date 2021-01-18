@@ -18,9 +18,6 @@ export function reportReducer(state: IUserReportsState | undefined, action: Acti
 
 const reducer = createReducer<IUserReportsState>(
   initialState,
-  on(reportsActions.loadReport, state => ({
-    ...state
-  })),
 
   on(reportsActions.userReportLoaded, (state , { data }) => ({
     ...state,

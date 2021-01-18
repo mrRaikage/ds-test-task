@@ -1,6 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
-import { ApiService } from '../../../shared/services/api.service';
 import {Observable} from 'rxjs';
+
+import { ApiService } from '../../../shared/services/api.service';
 import {IUserGraph, IReportsData} from '../models/reports-data.interface';
 
 @Injectable({

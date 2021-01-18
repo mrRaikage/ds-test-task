@@ -18,7 +18,6 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, private router: Router) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    // TODO define auth flow and fix this
     if (this.authService.hasToken()) {
       request = request.clone({
         setHeaders: {

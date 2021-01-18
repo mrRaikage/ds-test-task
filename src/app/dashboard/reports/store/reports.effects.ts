@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import * as reportsActions from './reports.actions';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { ReportsService } from '../services/reports.service';
+import { of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
+import * as reportsActions from './reports.actions';
+import { ReportsService } from '../services/reports.service';
+import * as authActions from '../../../auth/store/auth/auth.actions';
 
 @Injectable()
 export class ReportsEffects {
@@ -12,6 +15,7 @@ export class ReportsEffects {
     private actions$: Actions,
     private store: Store,
     private reportsService: ReportsService,
+    private toastr: ToastrService,
   ) {
   }
 
@@ -24,6 +28,10 @@ export class ReportsEffects {
         })
       );
     }),
+    catchError((error) => {
+      this.toastr.error('Oops, report loaded failed');
+      return of(reportsActions.userReportLoadedFailure());
+    }),
   ));
 
   loadGraph$ = createEffect(() => this.actions$.pipe(
@@ -34,6 +42,10 @@ export class ReportsEffects {
           return reportsActions.reportGraphLoaded({ graphData });
         })
       );
+    }),
+    catchError((error) => {
+      this.toastr.error('Oops, graph loaded failed');
+      return of(reportsActions.reportGraphLoadedFailure());
     }),
   ));
 }

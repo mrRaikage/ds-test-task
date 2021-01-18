@@ -1,19 +1,19 @@
 <div *ngIf="arrayOfReports$ | async as arrayOfReports" class="report-panel">
 
   <ul class="row-report report-header">
-    <li class="col-report col-report__id"> Id </li>
-    <li class="col-report col-report__name"> Name </li>
-    <li class="col-report col-report__user-resolved" *ngIf="arrayOfReports[0].users_resolved"> Users resolved </li>
-    <li class="col-report col-report__active"> Is Active </li>
-    <li class="col-report col-report__img"> Image </li>
-    <li class="col-report col-report__graph"> Graph </li>
+    <li class="col-report col-report__id">Id</li>
+    <li class="col-report col-report__name">Name</li>
+    <li class="col-report col-report__user-resolved" *ngIf="isAdmin$ | async">Users resolved</li>
+    <li class="col-report col-report__active">Is Active</li>
+    <li class="col-report col-report__img">Image</li>
+    <li class="col-report col-report__graph">Graph</li>
   </ul>
 
   <ul class="report-list" *ngFor="let report of arrayOfReports;">
     <ul class="row-report">
-      <li class="col-report col-report__id"> {{ report.id }}</li>
-      <li class="col-report col-report__name"> {{ report.name }}</li>
-      <li class="col-report col-report__user-resolved" *ngIf="report.users_resolved"> {{ report.users_resolved }}</li>
+      <li class="col-report col-report__id">{{ report.id }}</li>
+      <li class="col-report col-report__name">{{ report.name }}</li>
+      <li class="col-report col-report__user-resolved" *ngIf="isAdmin$ | async">{{ report.users_resolved }}</li>
       <li class="col-report col-report__active">{{ report.active ? 'Active' : 'Not active' }}</li>
       <li class="col-report col-report__img">
         <img [src]=report.image_url>
